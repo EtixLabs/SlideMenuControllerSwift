@@ -101,6 +101,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         opacityframe.origin.y = opacityframe.origin.y + opacityOffset
         opacityframe.size.height = opacityframe.size.height - opacityOffset
         opacityView = UIView(frame: opacityframe)
+		opacityView.accessibilityLabel = "view_menu_opacityview"
         opacityView.backgroundColor = SlideMenuOptions.opacityViewBackgroundColor
         opacityView.autoresizingMask = [UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleWidth]
         opacityView.layer.opacity = 0.0
@@ -870,6 +871,7 @@ extension UIViewController {
     
     public func addLeftBarButtonWithImage(buttonImage: UIImage) {
         let leftButton: UIBarButtonItem = UIBarButtonItem(image: buttonImage, style: UIBarButtonItemStyle.Plain, target: self, action: "toggleLeft")
+        leftButton.accessibilityLabel = "hamburger_menu_left"
         navigationItem.leftBarButtonItem = leftButton;
     }
     
