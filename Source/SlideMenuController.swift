@@ -51,7 +51,11 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     public var leftContainerView = UIView()
     public var rightContainerView =  UIView()
     public var mainViewController: UIViewController?
-    public var leftViewController: UIViewController?
+    public var leftViewController: UIViewController? {
+        didSet {
+            leftViewController?.accessibilityValue = "menu_closed"
+        }
+    }
     public var leftPanGesture: UIPanGestureRecognizer?
     public var leftTapGetsture: UITapGestureRecognizer?
     public var rightViewController: UIViewController?
@@ -177,6 +181,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         openLeftWithVelocity(0.0)
         
         track(.TapOpen)
+        leftViewController?.view.accessibilityValue = "menu_opened"
     }
     
     public override func openRight() {
@@ -191,6 +196,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         leftViewController?.beginAppearanceTransition(isLeftHidden(), animated: true)
         closeLeftWithVelocity(0.0)
         setCloseWindowLebel()
+        leftViewController?.view.accessibilityValue = "menu_closed"
     }
     
     public override func closeRight() {
