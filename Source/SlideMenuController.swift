@@ -121,7 +121,8 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         leftContainerView.backgroundColor = UIColor.clearColor()
         leftContainerView.autoresizingMask = UIViewAutoresizing.FlexibleHeight
         view.insertSubview(leftContainerView, atIndex: 2)
-        
+      
+      if rightViewController != nil {
         var rightFrame: CGRect = view.bounds
         rightFrame.size.width = SlideMenuOptions.rightViewWidth
         rightFrame.origin.x = rightMinOrigin()
@@ -132,9 +133,9 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         rightContainerView.backgroundColor = UIColor.clearColor()
         rightContainerView.autoresizingMask = UIViewAutoresizing.FlexibleHeight
         view.insertSubview(rightContainerView, atIndex: 3)
-        
-        addLeftGestures()
         addRightGestures()
+      }
+      addLeftGestures()
     }
   
     public override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
